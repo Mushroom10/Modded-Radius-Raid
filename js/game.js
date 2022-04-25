@@ -3,7 +3,7 @@ Init
 ==============================================================================*/
 $.setupStorage();
 
-var prestigepoints = $.storage['prestige']
+var prestigepoints = $.storage['prestige'] + 1000
 var damage = 1 + $.storage['damage'] *0.5
 var velocity = 10 + $.storage['velocity'] * 1
 var firerate = 1 + $.storage['firerate'] * 0.5
@@ -1022,6 +1022,11 @@ $.setState = function( state ) {
 				$.mouse.down = 0;				
 				if( window.confirm( 'Are you sure you want to clear all locally stored game data? This cannot be undone.') ) {
 					$.clearStorage();
+					prestigepoints = 0
+					damage = 1 - $.storage['damage'] *0.5
+					velocity = 10 - $.storage['velocity'] * 1
+					firerate = 1 - $.storage['firerate'] * 0.5
+					health = 1 - $.storage['health']*0.1
 					$.mouse.down = 0;
 				}
 			}
